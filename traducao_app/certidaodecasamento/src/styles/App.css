@@ -1,0 +1,130 @@
+/* Reset básico e definição de fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Layout do App */
+body {
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Mudar para 'flex-start' para começar no topo */
+  height: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden; /* Evita a rolagem horizontal */
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilo do formulário */
+form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Limita o máximo de largura para desktops grandes */
+  margin-top: 20px;
+  overflow-y: auto; /* Permite rolar caso o conteúdo seja grande */
+}
+
+/* Campos de entrada */
+div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #555;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+/* Botão de envio */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para mensagens de erro ou sucesso */
+.alert {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.alert.success {
+  background-color: #28a745;
+  color: white;
+}
+
+.alert.error {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  form {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Estilo para os campos "nome" e "data de nascimento" lado a lado */
+form > div {
+  display: flex;
+  gap: 20px; /* Espaço entre os campos */
+  margin-bottom: 15px;
+}
+
+form > div > label {
+  flex-basis: 150px; /* Largura fixa para os labels */
+}
+
+form > div > input {
+  flex: 1; /* O input ocupa o espaço restante */
+}
+
+/* Restante do estilo já fornecido anteriormente */
+
