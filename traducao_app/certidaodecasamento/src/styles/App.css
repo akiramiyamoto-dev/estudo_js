@@ -1,4 +1,31 @@
 /* Definir margem padrão para todos os formulários */
+
+/* Corpo da página */
+body {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: flex-start; /* Centraliza verticalmente */
+  height: 100vh; /* Garantir que a altura seja 100% da tela */
+  margin: 0; /* Remove qualquer margem padrão */
+  background-color: #f3f0f0; /* Cor de fundo*/
+}
+h1 {
+  font-size: 40px;
+}
+p {
+  margin: auto;
+}
+/* Formulário */
+form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px; /* Adiciona padding interno ao formulário */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px; /* Max largura para manter o formulário centrado e em tamanho adequado */
+  margin-top: 20px; /* Garantir um espaçamento superior */
+}
+
 .form-row {
   display: flex;
   gap: 16px; /* Adiciona um pequeno espaço entre as colunas */
@@ -17,7 +44,7 @@
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 45px;
   box-sizing: border-box; /* Para garantir que o padding e bordas sejam considerados dentro da largura total */
 }
 

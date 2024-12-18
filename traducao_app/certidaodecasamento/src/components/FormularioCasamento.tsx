@@ -2,20 +2,20 @@ import React, { useState } from "react";
 
 const FormularioCasamento = () => {
   const [formData, setFormData] = useState({
-    nomeNoivo: "",
-    nomeNoiva: "",
+    nomeConjugue1: "",
+    nomeConjugue2: "",
     localCasamento: "",
     dataCasamento: "",
-    dataNascimentoNoivo: "",
-    dataNascimentoNoiva: "",
-    paiNoivoNome: "",
-    paiNoivoRg: "",
-    maeNoivoNome: "",
-    maeNoivoRg: "",
-    paiNoivaNome: "",
-    paiNoivaRg: "",
-    maeNoivaNome: "",
-    maeNoivaRg: "",
+    dataNascimentoConjugue1: "",
+    dataNascimentoConjugue2: "",
+    paiConjugue1Nome: "",
+    paiConjugue1Rg: "",
+    maeConjugue1Nome: "",
+    maeConjugue1Rg: "",
+    paiConjugue2Nome: "",
+    paiConjugue2Rg: "",
+    maeConjugue2Nome: "",
+    maeConjugue2Rg: "",
     testemunha1Nome: "",
     testemunha1Rg: "",
     testemunha2Nome: "",
@@ -38,26 +38,30 @@ const FormularioCasamento = () => {
   };
 
   return (
+
     <form onSubmit={handleSubmit}>
       {/* Nome do Noivo e Data de Nascimento do Noivo */}
+      <h1>Formulário de Certidão de Casamento</h1>
+      <p>Informe os dados conforme a certidão para tradução.</p>
+      <br />
       <div className="form-row">
-        <div className="form-group nome-noivo">
-          <label>Nome do Noivo:</label>
+        <div className="form-group nome-conjugue1">
+          <label>Nome do cônjugue 1:</label>
           <input
             type="text"
-            name="nomeNoivo"
-            value={formData.nomeNoivo}
+            name="nomeConjugue1"
+            value={formData.nomeConjugue1}
             onChange={handleChange}
-            placeholder="Digite o nome do noivo"
+            placeholder="Digite o nome do cônjugue 1"
             required
           />
         </div>
-        <div className="form-group data-nascimento-noivo">
-          <label>Nasc. do Noivo:</label>
+        <div className="form-group data-nascimento-conjugue1">
+          <label>Nasc. do Cônjugue 1:</label>
           <input
             type="date"
-            name="dataNascimentoNoivo"
-            value={formData.dataNascimentoNoivo}
+            name="dataNascimentoConjugue1"
+            value={formData.dataNascimentoConjugue1}
             onChange={handleChange}
             required
           />
@@ -66,23 +70,23 @@ const FormularioCasamento = () => {
 
       {/* Nome da Noiva e Data de Nascimento da Noiva */}
       <div className="form-row">
-        <div className="form-group nome-noiva">
-          <label>Nome da Noiva:</label>
+        <div className="form-group nome-conjugue2">
+          <label>Nome do cônjugue 2:</label>
           <input
             type="text"
-            name="nomeNoiva"
-            value={formData.nomeNoiva}
+            name="nomeConjugue2"
+            value={formData.nomeConjugue2}
             onChange={handleChange}
-            placeholder="Digite o nome da noiva"
+            placeholder="Digite o nome do cônjugue 2"
             required
           />
         </div>
-        <div className="form-group data-nascimento-noiva">
-          <label>Nasc. da Noiva:</label>
+        <div className="form-group data-nascimento-conjugue2">
+          <label>Nasc. da Cônjugue 2:</label>
           <input
             type="date"
-            name="dataNascimentoNoiva"
-            value={formData.dataNascimentoNoiva}
+            name="dataNascimentoConjugue2"
+            value={formData.dataNascimentoConjugue2}
             onChange={handleChange}
             required
           />
@@ -91,49 +95,49 @@ const FormularioCasamento = () => {
 
       {/* Nome e RG dos pais do Noivo */}
       <div className="form-row">
-        <div className="form-group pai-noivo">
-          <label>Nome do Pai do Noivo:</label>
+        <div className="form-group pai-Conjugue1">
+          <label>Nome do Pai do Conjugue1:</label>
           <input
             type="text"
-            name="paiNoivoNome"
-            value={formData.paiNoivoNome}
+            name="paiConjugue1Nome"
+            value={formData.paiConjugue1Nome}
             onChange={handleChange}
-            placeholder="Nome do Pai do Noivo"
+            placeholder="Nome do Pai do Conjugue1"
             required
           />
         </div>
-        <div className="form-group pai-noivo-rg">
-          <label>RG do Pai do Noivo:</label>
+        <div className="form-group pai-conjugue1-rg">
+          <label>RG do Pai do Conjugue1:</label>
           <input
             type="text"
-            name="paiNoivoRg"
-            value={formData.paiNoivoRg}
+            name="paiConjugue1Rg"
+            value={formData.paiConjugue1Rg}
             onChange={handleChange}
-            placeholder="RG do Pai do Noivo"
+            placeholder="RG do Pai do Cônjugue 1"
             required
           />
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group mae-noivo">
-          <label>Nome da Mãe do Noivo:</label>
+        <div className="form-group mae-conjugue1">
+          <label>Nome da Mãe do Cônjugue 1:</label>
           <input
             type="text"
-            name="maeNoivoNome"
-            value={formData.maeNoivoNome}
+            name="maeConjugue1Nome"
+            value={formData.maeConjugue1Nome}
             onChange={handleChange}
-            placeholder="Nome da Mãe do Noivo"
+            placeholder="Nome da Mãe do Cônjugue 1"
             required
           />
         </div>
-        <div className="form-group mae-noivo-rg">
-          <label>RG da Mãe do Noivo:</label>
+        <div className="form-group mae-conjugue1-rg">
+          <label>RG da Mãe do Cônjugue 1:</label>
           <input
             type="text"
-            name="maeNoivoRg"
-            value={formData.maeNoivoRg}
+            name="maeConjugue1Rg"
+            value={formData.maeConjugue1Rg}
             onChange={handleChange}
-            placeholder="RG da Mãe do Noivo"
+            placeholder="RG da Mãe do Cônjugue 1"
             required
           />
         </div>
@@ -141,49 +145,49 @@ const FormularioCasamento = () => {
 
       {/* Nome e RG dos pais da Noiva */}
       <div className="form-row">
-        <div className="form-group pai-noiva">
-          <label>Nome do Pai da Noiva:</label>
+        <div className="form-group pai-conjugue2">
+          <label>Nome do Pai da Conjugue 2:</label>
           <input
             type="text"
-            name="paiNoivaNome"
-            value={formData.paiNoivaNome}
+            name="paiConjugue2Nome"
+            value={formData.paiConjugue2Nome}
             onChange={handleChange}
-            placeholder="Nome do Pai da Noiva"
+            placeholder="Nome do Pai da Cônjugue 2"
             required
           />
         </div>
-        <div className="form-group pai-noiva-rg">
-          <label>RG do Pai da Noiva:</label>
+        <div className="form-group pai-Conjugue2-rg">
+          <label>RG do Pai do Cônjugue 2:</label>
           <input
             type="text"
-            name="paiNoivaRg"
-            value={formData.paiNoivaRg}
+            name="paiConjugue2Rg"
+            value={formData.paiConjugue2Rg}
             onChange={handleChange}
-            placeholder="RG do Pai da Noiva"
+            placeholder="RG do Pai do Cônjugue 2"
             required
           />
         </div>
       </div>
       <div className="form-row">
-        <div className="form-group mae-noiva">
-          <label>Nome da Mãe da Noiva:</label>
+        <div className="form-group mae-Conjugue2">
+          <label>Nome da Mãe da Cônjugue 2:</label>
           <input
             type="text"
-            name="maeNoivaNome"
-            value={formData.maeNoivaNome}
+            name="maeConjugue2Nome"
+            value={formData.maeConjugue2Nome}
             onChange={handleChange}
-            placeholder="Nome da Mãe da Noiva"
+            placeholder="Nome da Mãe da Cônjugue 2"
             required
           />
         </div>
-        <div className="form-group mae-noiva-rg">
-          <label>RG da Mãe da Noiva:</label>
+        <div className="form-group mae-Conjugue2-rg">
+          <label>RG da Mãe do Cônjugue 2:</label>
           <input
             type="text"
-            name="maeNoivaRg"
-            value={formData.maeNoivaRg}
+            name="maeConjugue2Rg"
+            value={formData.maeConjugue2Rg}
             onChange={handleChange}
-            placeholder="RG da Mãe da Noiva"
+            placeholder="RG da Mãe do Cônjugue 2"
             required
           />
         </div>
