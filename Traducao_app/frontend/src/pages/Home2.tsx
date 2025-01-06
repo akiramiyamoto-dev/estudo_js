@@ -1,33 +1,13 @@
-import Hero from '../assets/images/Hero.png'
 import React from 'react';
-
-
+import SocialMedia from '../components/SocialMedia';
+import InscribeSection from '../components/SubscribeSection';
+import HeroSection from '../components/HeroSection';
 const Home2: React.FC = () => {
     return (
         <>
             {/* Hero Section */}
-            <div className="container heroContainer">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="row justify-content-center align-items-center">
-                            <div className="col-12 col-md-8 leftHeroTitle order-1 order-md-0">
-                                <div className="titleHero">
-                                    <h1 className='h1 p-3'>
-                                        Precisa de Tradução?
-                                    </h1>
-                                    <p className='h4 p-4'>"Envie seus documentos com segurança e receba traduções precisas e rápidas."</p>
-                                    <div className="buttonWrapper p-4">
-                                        <button className="btn btn-primary p-2" type="submit">GET STARTED</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-md-4 rightHeroTitle p-0 order-0 order-md-1">
-                                <div className="imgHero"><img src={Hero} alt="" className='responsive-img w-100' /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div >
+            <HeroSection />
+
             {/* Services Section */}
             <div className="container servicesSection cinza p-4">
                 <div className="row">
@@ -35,8 +15,8 @@ const Home2: React.FC = () => {
                         <div className="row align-items-center">
                             {/* left services title */}
                             <div className="col-12 col-md-12 col-lg-4 leftServices">
-                                <div className="titleServices"><h1>Why do we help with legalization?</h1>
-                                    <p>We are here for UMKM in Indonesia to carry out the legalization process, which is sometimes complicated.</p>
+                                <div className="titleServices"><h1>Porque contratar nossos serviços ?</h1>
+                                    <p>"Escolha nossos serviços de tradução para <strong>garantir</strong> precisão, rapidez e segurança em cada documento, seja para negócios ou para comunicação pessoal. Com a nossa expertise, sua mensagem sempre será entendida do jeito certo."</p>
                                 </div>
                             </div>
                             {/* right services cards */}
@@ -44,51 +24,27 @@ const Home2: React.FC = () => {
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="row rowCards g-4">
-                                            {/**Colunas de cards */}
+                                            {/**Cards Columns*/}
                                             <div className="col-md-4">
                                                 <div className="cardWrapper justify-content-center">
                                                     <div className="card" style={{ width: '256px' }}>
                                                         <img src="" className="card-img-top" alt="Hero2" />
                                                         <div className="card-body">
-                                                            <h5 className="card-title">Traduções de Documentos</h5>
-                                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                            <h5 className="card-title">Tradução Técnica e Especializada</h5>
+                                                            <p className="card-text">Traduza documentos técnicos, acadêmicos e corporativos com precisão. Confie em nossos serviços de tradução especializados para atender às suas necessidades específicas.</p>
                                                             <a href="#" className="btn btn-primary">Go somewhere</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div className="col-md-4">
                                                 <div className="cardWrapper justify-content-center">
                                                     <div className="card" style={{ width: '256px' }}>
                                                         <img src="" className="card-img-top" alt="Hero2" />
                                                         <div className="card-body">
-                                                            <h5 className="card-title">Traduções de Documentos</h5>
-                                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                            <a href="#" className="btn btn-primary">Go somewhere</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/*fim col */}
-                                            <div className="col-md-4">
-                                                <div className="cardWrapper justify-content-center">
-                                                    <div className="card" style={{ width: '256px' }}>
-                                                        <img src="" className="card-img-top" alt="Hero2" />
-                                                        <div className="card-body">
-                                                            <h5 className="card-title">Traduções de Documentos</h5>
-                                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                            <a href="#" className="btn btn-primary">Go somewhere</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <div className="cardWrapper justify-content-center">
-                                                    <div className="card" style={{ width: '256px' }}>
-                                                        <img src="" className="card-img-top" alt="Hero2" />
-                                                        <div className="card-body">
-                                                            <h5 className="card-title">Traduções de Documentos</h5>
-                                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                            <h5 className="card-title">Tradução Simples e Ágil</h5>
+                                                            <p className="card-text">Seus documentos precisam de uma tradução simples e sem complicação? Oferecemos traduções rápidas, claras e com a qualidade que você merece, diretamente do Brasil para o Japão."</p>
                                                             <a href="#" className="btn btn-primary">Go somewhere</a>
                                                         </div>
                                                     </div>
@@ -100,21 +56,8 @@ const Home2: React.FC = () => {
                                                     <div className="card" style={{ width: '256px' }}>
                                                         <img src="" className="card-img-top" alt="Hero2" />
                                                         <div className="card-body">
-                                                            <h5 className="card-title">Traduções de Documentos</h5>
-                                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                            <a href="#" className="btn btn-primary">Go somewhere</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/*fim col */}
-                                            <div className="col-md-4">
-                                                <div className="cardWrapper justify-content-center">
-                                                    <div className="card" style={{ width: '256px' }}>
-                                                        <img src="" className="card-img-top" alt="Hero2" />
-                                                        <div className="card-body">
-                                                            <h5 className="card-title">Traduções de Documentos</h5>
-                                                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                            <h5 className="card-title">Tradução Juramentada para o Japão </h5>
+                                                            <p className="card-text">Precisa traduzir seus documentos com validade legal no Japão? Nossos tradutores oferecem traduções juramentadas rápidas e confiáveis para você.</p>
                                                             <a href="#" className="btn btn-primary">Go somewhere</a>
                                                         </div>
                                                     </div>
@@ -130,6 +73,9 @@ const Home2: React.FC = () => {
                     </div>
                 </div>
             </div >
+            <SocialMedia />
+            {/* Inscribe */}
+            <InscribeSection />
 
         </>
     );

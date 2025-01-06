@@ -1,0 +1,8 @@
+/*Este é um arquivo de estilização geral do projeto */
+
+/* Resets globais*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

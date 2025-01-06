@@ -1,9 +1,9 @@
 import './App.css'
-import Home2 from './pages/Home2'
+import AppRoutes from './routes/AppRoutes'
 const App: React.FC = () => {
   return (
     <>
-      <Home2 />
+      <AppRoutes />
 
     </>
   )

@@ -65,6 +65,7 @@ img.responsive-img {
   }
 }
 
+/* cores de testes  */
 .verde {
   background-color: rgb(132, 255, 16);
 }
@@ -82,4 +83,121 @@ img.responsive-img {
 }
 .cinza {
   background-color: rgb(231, 231, 229);
+}
+
+/* social media */
+.socialMediaSection {
+  background-color: rgb(255, 199, 77);
+}
+.socialTitle {
+  font-size: 3.26em;
+  font-weight: 600;
+}
+
+.social-media-section {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+/* Título da seção */
+.social-media-section h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Lista de redes sociais */
+.social-media-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaçamento entre os ícones */
+}
+
+/* Estilo dos itens */
+.social-media-list li {
+  display: inline-block;
+}
+
+/* Links dos ícones */
+.social-media-list a {
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 2rem;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+/* Cor padrão dos ícones */
+.social-media-list .facebook a {
+  background-color: #4267b2; /* Azul do Facebook */
+}
+
+.social-media-list .twitter a {
+  background-color: #1da1f2; /* Azul do Twitter */
+}
+
+.social-media-list .pinterest a {
+  background-color: #bd081c; /* Vermelho do Pinterest */
+}
+
+.social-media-list .instagram a {
+  background: linear-gradient(
+    45deg,
+    #fdc468,
+    #df4996,
+    #8d3daa
+  ); /* Gradiente do Instagram */
+}
+
+/* Hover nos ícones */
+.social-media-list a:hover {
+  transform: scale(1.2); /* Aumenta levemente no hover */
+  filter: brightness(1.2); /* Torna a cor mais brilhante */
+  font-size: 2.4rem;
+}
+
+/* Ícones responsivos */
+@media (max-width: 576px) {
+  .social-media-list {
+    gap: 10px; /* Reduz o espaçamento em telas pequenas */
+  }
+
+  .social-media-list a {
+    width: 50px;
+    height: 50px; /* Ícones menores */
+    font-size: 1.5rem;
+  }
+  .social-media-list a:hover {
+    font-size: 1.8rem; /* Sincroniza o tamanho do ícone interno no hover */
+  }
+}
+
+/* subscribe Section */
+
+.subscribeSection {
+  height: 600px;
+  margin-top: 40px;
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+  border-top: 5px solid #007bff;
+}
+
+.inscribeSectionTitle {
+  margin-top: 150px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #007bff;
+  font-weight: bold;
 }

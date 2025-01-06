@@ -8,8 +8,10 @@ import Footer from './components/Footer.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <NavBar />
-    <App />
-    <Footer />
+    <AuthProvider>
+      <NavBar />
+      <App />
+      <Footer />
+    </AuthProvider>
   </StrictMode>,
 )
