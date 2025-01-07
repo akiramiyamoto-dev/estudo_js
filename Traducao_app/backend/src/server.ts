@@ -1,48 +1,34 @@
-// import express from "express";
-// import dotenv from "dotenv";
-// import cors from "cors";
-// import sequelize from "./config/databaseConfig";
-// import authRoutes from "./routes/authRoutes";
-
-// dotenv.config();
-// const app = express();
-// app.use(cors());
-// app.use(express.json());
-
-// // Rotas
-// app.use("/api/auth", authRoutes);
-
-// // Teste de conexão ao banco de dados
-// sequelize
-//   .authenticate()
-//   .then(() =>
-//     console.log("Conexão com o banco de dados estabelecida com sucesso")
-//   )
-//   .catch((err) =>
-//     console.error("Não foi possível conectar ao banco de dados:", err)
-//   );
-
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+/********************************************************* */
 
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 import sequelize from "./config/databaseConfig"; // Configuração do Sequelize
 import authRoutes from "./routes/authRoutes"; // Rotas de autenticação
-import { Cliente } from "./models/models"; // Importar o modelo de usuário
+import clientRoutes from "./routes/clientRoutes"; // Rotas relacionadas aos clientes
+// import { Cliente } from "./models/models"; // Importar o modelo de cliente
 
 // Carregar variáveis de ambiente
 dotenv.config();
 
 const app = express();
 
-// Middlewares
-app.use(cors());
+// Middlewares globais
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Substitua pelo domínio do frontend
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
+
+// Middleware para servir arquivos estáticos (uploads)
+app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
 // Rotas
 app.use("/api/auth", authRoutes);
+app.use("/api/clients", clientRoutes);
 
 // Sincronizar o banco de dados e autenticar conexão
 (async () => {
@@ -62,6 +48,6 @@ app.use("/api/auth", authRoutes);
   }
 })();
 
-// Porta do servidor
+// Configuração da porta do servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

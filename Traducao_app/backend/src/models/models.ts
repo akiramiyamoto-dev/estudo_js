@@ -7,6 +7,7 @@ class Cliente extends Model {
   email!: string;
   senha!: string;
   telefone!: string;
+  documentoPath!: string; // Novo campo para armazenar o caminho do documento
 }
 
 Cliente.init(
@@ -32,6 +33,11 @@ Cliente.init(
     telefone: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    documentoPath: {
+      // Novo campo para o caminho do arquivo
+      type: DataTypes.STRING,
+      allowNull: true, // O campo pode ser nulo se o cliente não tiver um documento
     },
   },
   {

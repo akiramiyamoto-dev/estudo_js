@@ -1,47 +1,56 @@
-import { Request, Response, NextFunction } from "express";
 import multer from "multer";
-import { Error } from "sequelize";
+import path from "path";
 
-// Configuração de armazenamento de arquivos (local)
+// Configuração de armazenamento
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Defina a pasta onde os arquivos serão armazenados
+    // Define a pasta onde os arquivos serão armazenados
+    cb(null, path.resolve(__dirname, "uploads/"));
   },
   filename: (req, file, cb) => {
-    const timestamp = Date.now();
-    const fileName = `${timestamp}-${file.originalname}`;
-    cb(null, fileName);
+    // Adiciona um timestamp único ao nome do arquivo para evitar duplicações
+    const uniqueName = `${Date.now()}-${file.originalname}`;
+    cb(null, uniqueName);
   },
 });
 
-// Validação do tipo de arquivo e tamanho
-const fileFilter = (
-  req: Request,
-  file: Express.Multer.File,
-  cb: multer.FileFilterCallback
-) => {
-  if (
-    file.mimetype === "application/pdf" ||
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png"
-  ) {
-    cb(null, true); // Aceitar o arquivo
+// Filtro de arquivos permitidos
+const fileFilter: multer.Options["fileFilter"] = (req, file, cb) => {
+  const allowedTypes = ["application/pdf", "image/png", "image/jpeg"];
+  if (allowedTypes.includes(file.mimetype)) {
+    cb(null, true); // Aceita o arquivo
   } else {
-    cb(
-      new Error(
-        "Tipo de arquivo não permitido. Aceitamos apenas PDF, JPG ou PNG."
-      ),
-      false
-    ); // Rejeitar o arquivo
+    cb(new Error("Tipo de arquivo não suportado!")); // Rejeita o arquivo
   }
 };
 
-// Limite de tamanho do arquivo (5MB neste caso)
+// Configuração do middleware de upload
 const upload = multer({
-  storage: storage,
-  fileFilter: fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  storage,
+  limits: { fileSize: 100 * 1024 * 1024 }, // Limite de 100mb
+  fileFilter,
 });
 
-// Middleware para fazer upload de um arquivo (utiliza o campo 'file')
-export const uploadMiddleware = upload.single("file");
+// Middleware para lidar com o upload de um único arquivo (campo "file")
+const uploadMiddleware = (req: any, res: any, next: any) => {
+  // Log para verificar se o arquivo foi enviado
+  console.log("Arquivo recebido no middleware:", req.file); // Aqui, mostramos o arquivo recebido no middleware
+
+  upload.single("file")(req, res, (err: any) => {
+    if (err) {
+      console.log("Erro durante o upload:", err); // Exibe o erro, se houver
+      return res
+        .status(400)
+        .json({ message: "Erro no upload do arquivo", error: err.message });
+    }
+    // Log para verificar se o arquivo foi enviado
+    console.log("Arquivo recebido no middleware:", req.file); // Aqui, mostramos o arquivo recebido após o upload
+    next();
+  });
+};
+/********************************************** */
+// // Middleware para lidar com o upload de um único arquivo (campo "file")
+// const uploadMiddleware = upload.single("file");
+/************************************************* */
+
+export { uploadMiddleware };

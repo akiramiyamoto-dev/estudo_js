@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
+interface AuthenticatedRequest extends Request {
+  user?: any; // Substitua "any" pelo tipo real do seu `decoded`
+}
+
 interface JwtPayload {
   id: number;
   email: string;
@@ -8,7 +12,7 @@ interface JwtPayload {
 
 // Middleware para verificar o token JWT
 export const authMiddleware = (
-  req: Request,
+  req: AuthenticatedRequest,
   res: Response,
   next: NextFunction
 ) => {

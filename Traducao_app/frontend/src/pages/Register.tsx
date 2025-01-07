@@ -47,8 +47,12 @@ const Register: React.FC = () => {
                     confirmsenha: "",
                 });
             }
-        } catch (err) {
-            setError(err.response?.data?.message || "Erro ao realizar cadastro. Tente novamente.");
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                setError(error.response?.data?.message || "Erro ao realizar cadastro. Tente novamente.");
+            } else {
+                setError("Ocorreu um erro desconhecido.");
+            }
         }
     };
 

@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import NavBar from './components/NavBar.tsx';
 import Footer from './components/Footer.tsx';
+import { AuthProvider } from "./context/AuthContext";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,5 +14,5 @@ createRoot(document.getElementById('root')!).render(
       <App />
       <Footer />
     </AuthProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);

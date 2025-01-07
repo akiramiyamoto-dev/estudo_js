@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Cliente } from "../models/models"; // Importando o modelo Cliente
 
