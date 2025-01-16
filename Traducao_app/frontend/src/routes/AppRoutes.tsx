@@ -18,7 +18,7 @@ const AppRoutes: React.FC = () => {
                 <Route
                     path="/dashboard"
                     element={
-                        <PrivateRoute isAuthenticated={'isLoggedIn'} >
+                        <PrivateRoute isAuthenticated={true} >
                             <Dashboard />
                         </PrivateRoute>
                     }
@@ -26,7 +26,7 @@ const AppRoutes: React.FC = () => {
                 <Route
                     path="/client-area"
                     element={
-                        <PrivateRoute isAuthenticated={'isLoggedIn'} >
+                        <PrivateRoute isAuthenticated={true} >
                             <ClientArea />
                         </PrivateRoute>
                     }

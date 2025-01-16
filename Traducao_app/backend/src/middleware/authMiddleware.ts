@@ -1,8 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
+interface JwtPayload {
+  id: number;
+  nome: string;
+}
 interface AuthenticatedRequest extends Request {
-  user?: any; // Substitua "any" pelo tipo real do seu `decoded`
+  user?: JwtPayload; // Substitua "any" pelo tipo real do seu `decoded`
 }
 
 interface JwtPayload {
@@ -31,7 +35,8 @@ export const authMiddleware = (
     ) as JwtPayload;
     req.user = decoded;
     next();
+    console.log("Decoded token:", decoded); // Verifique se o id e email estão no decoded
   } catch (error) {
-    return res.status(401).json({ message: "Token inválido." });
+    return res.status(401).json({ message: "autorização de Token inválido." });
   }
 };

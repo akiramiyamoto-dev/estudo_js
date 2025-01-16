@@ -10,8 +10,8 @@ router.get("/clients", authMiddleware as RequestHandler, getAllClients);
 
 // Rota para upload de documentos
 router.post(
-  "documents/upload",
-  // authMiddleware as RequestHandler, // Verifica autenticação
+  "/documents/upload",
+  authMiddleware as RequestHandler, // Verifica autenticação
   uploadMiddleware, // Middleware de upload para um único arquivo
   uploadDocument as RequestHandler // Controlador para processar o upload
 );

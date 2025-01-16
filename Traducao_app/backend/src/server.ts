@@ -17,14 +17,15 @@ const app = express();
 // Middlewares globais
 app.use(
   cors({
-    origin: "http://localhost:5173", // Substitua pelo domínio do frontend
-    methods: ["GET", "POST"],
+    origin: process.env.FRONTEND_URL || "http://localhost:5173", // Substitua pelo domínio do frontend
+    methods: ["GET", "POST", "PUT", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(express.json());
 
 // Middleware para servir arquivos estáticos (uploads)
-app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
+app.use("/uploads", express.static(path.resolve(__dirname, "src", "uploads")));
 
 // Rotas
 app.use("/api/auth", authRoutes);

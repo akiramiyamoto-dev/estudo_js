@@ -1,10 +1,13 @@
 /***************************************************************************** */
 
-import { Request, Response } from "express";
+import { Request, RequestHandler, Response } from "express";
 import { Cliente } from "../models/models"; // Supondo que você tenha um modelo Cliente
 
 // Controlador para obter todos os clientes (já foi discutido)
-export const getAllClients = async (req: Request, res: Response) => {
+export const getAllClients: RequestHandler = async (
+  req: Request,
+  res: Response
+) => {
   try {
     // Lógica para buscar clientes (atualmente uma resposta de exemplo)
     res.status(200).json({ message: "Lista de clientes" });
@@ -55,7 +58,7 @@ export const uploadDocument = async (req: Request, res: Response) => {
     // Resposta de sucesso com o caminho do arquivo
     res.status(200).json({
       message: "Upload bem-sucedido!",
-      filePath,
+      filePath: `http://localhost:5000/uploads/${uniqueFileName}`, // Caminho completo
       fileName: uniqueFileName, // Retorna o nome do arquivo renomeado, caso tenha feito renomeação
     });
   } catch (error) {

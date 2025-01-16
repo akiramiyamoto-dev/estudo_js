@@ -15,16 +15,4 @@ const sequelize = new Sequelize({
   logging: process.env.NODE_ENV === "development" ? console.log : false, // Ativa logs apenas no ambiente de desenvolvimento
 });
 
-// // Configuração do Sequelize
-// const sequelize = new Sequelize({
-//   dialect: "mysql", // Pode ser "mariadb" também, dependendo do que você usa
-//   host: "localhost", // Endereço do banco
-//   username: "root", // Usuário do banco
-//   password: "new", // Senha do banco
-//   database: "traducao", // Nome do banco de dados
-//   port: 3306, // Porta padrão do MySQL
-//   logging: (msg) => console.log(msg), // Para exibir as queries no console (opcional)
-// });
-
-// Exporta a instância do Sequelize para uso em outros arquivos
 export default sequelize;

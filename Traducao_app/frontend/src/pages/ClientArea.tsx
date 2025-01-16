@@ -8,6 +8,7 @@ const ClientArea: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false); // Estado para indicar carregamento
 
     const handleFileUpload = async (e: React.FormEvent) => {
+        console.log("este é o teste de async")
         e.preventDefault();
         setFeedback(""); // Limpa mensagens anteriores
         setLoading(true); // Define estado de carregamento
@@ -22,17 +23,27 @@ const ClientArea: React.FC = () => {
             const formData = new FormData();
             formData.append("file", file);
             console.log("Arquivo a ser enviado", file);
-            console.log("FormData", formData);
 
             formData.append("message", message); // Inclui a mensagem no envio
+            // Log para verificar o conteúdo do FormData
+            console.log("FormData", formData);
+
+            const token = localStorage.getItem("token")
+
+            if (!token) {
+                setFeedback("Token de autenticação não encontrado.");
+                setLoading(false);
+                return;
+            }
 
             // Faz a requisição para o back-end
-            await axios.post("http://localhost:5000/api/clients/documents/upload", formData, {
+            const response = await axios.post("http://localhost:5000/api/clients/documents/upload", formData, {
                 headers: {
                     "Content-type": "multipart/form-data",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 },
-            });
+            }); console.log("teste de axios post")
+            console.log("aqui é a parte do Axios Resposta do servidor:", response);
 
             setFeedback("Documento enviado com sucesso!");
             setMessage(""); // Reseta o campo de mensagem
@@ -71,8 +82,19 @@ const ClientArea: React.FC = () => {
                     <label htmlFor="file" className="form-label">
                         Escolha o arquivo para envio
                     </label>
+                    {/* <input
+                        id="fileInput"
+                        type="file"
+                        className="form-control"
+                        onChange={(e) => {
+                            const selectedFile = e.target.files ? e.target.files[0] : null;
+                            setFile(selectedFile);
+                            console.log("Arquivo selecionado:", selectedFile); // Verifica o arquivo selecionado
+                        }}
+                    /> */}
+
                     <input
-                        id="file"
+                        id="fileInput"
                         type="file"
                         className="form-control"
                         onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}

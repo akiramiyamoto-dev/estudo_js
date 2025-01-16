@@ -5,7 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import NavBar from './components/NavBar.tsx';
 import Footer from './components/Footer.tsx';
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthProvider.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

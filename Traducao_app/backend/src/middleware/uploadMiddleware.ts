@@ -1,11 +1,18 @@
 import multer from "multer";
 import path from "path";
+import fs from "fs";
+
+const uploadPath = path.resolve(__dirname, "../uploads");
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
 
 // Configuração de armazenamento
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // Define a pasta onde os arquivos serão armazenados
-    cb(null, path.resolve(__dirname, "uploads/"));
+    // cb(null, path.resolve(__dirname, "../uploads"));
+    cb(null, uploadPath); // Corrigido
   },
   filename: (req, file, cb) => {
     // Adiciona um timestamp único ao nome do arquivo para evitar duplicações
