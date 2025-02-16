@@ -6,7 +6,12 @@ import { uploadMiddleware } from "../middleware/uploadMiddleware";
 const router = Router();
 
 // Rota para listar todos os clientes
-router.get("/clients", authMiddleware as RequestHandler, getAllClients);
+// router.get("/clients", authMiddleware as RequestHandler, getAllClients);
+router.get(
+  "/clients/:id/documents",
+  authMiddleware as RequestHandler,
+  getAllClients
+);
 
 // Rota para upload de documentos
 router.post(

@@ -25,6 +25,7 @@ const Login: React.FC = () => {
             if (response.status === 200) {
                 // Salve o token no localStorage
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("clienteId", response.data.clienteId);
 
                 // Redirecione para a página do cliente (ou outra área protegida)
                 window.location.href = "/client-area";

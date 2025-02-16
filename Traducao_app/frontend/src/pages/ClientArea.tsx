@@ -28,6 +28,17 @@ const ClientArea: React.FC = () => {
             // Log para verificar o conteúdo do FormData
             console.log("FormData", formData);
 
+            //****************************************************************** */
+            // Adicione o clienteId ao FormData
+            const clienteId = localStorage.getItem("clienteId"); // Supondo que o clienteId esteja armazenado no localStorage
+            if (!clienteId) {
+                setFeedback("Cliente não autenticado.");
+                setLoading(false);
+                return;
+            }
+            formData.append("clienteId", clienteId);
+            /**************************************************************************************** */
+
             const token = localStorage.getItem("token")
 
             if (!token) {

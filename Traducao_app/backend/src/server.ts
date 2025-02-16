@@ -20,6 +20,7 @@ app.use(
     origin: process.env.FRONTEND_URL || "http://localhost:5173", // Substitua pelo domínio do frontend
     methods: ["GET", "POST", "PUT", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, //Permitir cookies e headers de autenticação
   })
 );
 app.use(express.json());

@@ -57,7 +57,7 @@ export const login = async (req: Request, res: Response) => {
     });
 
     // Retornar o token
-    res.json({ token });
+    res.json({ token, clienteId: cliente.id });
   } catch (err) {
     console.error(err); // Log de erro
     res.status(500).json({ message: "Erro no login" });

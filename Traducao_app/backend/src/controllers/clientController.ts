@@ -42,6 +42,7 @@ export const uploadDocument = async (req: Request, res: Response) => {
 
     // Caminho do arquivo salvo
     const filePath = req.file.path; // A variável filePath já pode ser usada no banco de dados ou para respostas.
+    // const filePath = `http://localhost:5000/uploads/${uniqueFileName}`;
 
     // (Opcional) Salvar o caminho do arquivo no banco de dados, associando ao cliente (caso seja necessário)
     const clienteId = req.body.clienteId; // Supondo que o clienteId seja enviado no corpo da requisição
@@ -58,7 +59,7 @@ export const uploadDocument = async (req: Request, res: Response) => {
     // Resposta de sucesso com o caminho do arquivo
     res.status(200).json({
       message: "Upload bem-sucedido!",
-      filePath: `http://localhost:5000/uploads/${uniqueFileName}`, // Caminho completo
+      filePath: `https://localhost:5000/uploads/${uniqueFileName}`, // Caminho completo
       fileName: uniqueFileName, // Retorna o nome do arquivo renomeado, caso tenha feito renomeação
     });
   } catch (error) {
