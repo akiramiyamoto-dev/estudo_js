@@ -1,0 +1,13 @@
+.heroContainer {
+  width: 100vw; /* Garantir que ocupe toda a largura da tela */
+  overflow: hidden; /* Prevenir qualquer transbordamento */
+}
+
+.hero {
+  background-image: url("../assets/images/background-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 250px 0;
+}

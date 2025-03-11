@@ -1,0 +1,17 @@
+.containerValores {
+  background: linear-gradient(rgba(145, 0, 80, 0.616), rgba(56, 0, 32, 0.959)),
+    url("../assets/images/img3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  color: white;
+}
+.cardHeader {
+  background-color: #94005b;
+}
+
+.btnColor {
+  background-color: #94005b;
+  color: white;
+}

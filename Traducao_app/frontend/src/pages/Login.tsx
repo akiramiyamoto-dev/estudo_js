@@ -23,11 +23,8 @@ const Login: React.FC = () => {
             });
 
             if (response.status === 200) {
-                // Salve o token no localStorage
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("clienteId", response.data.clienteId);
-
-                // Redirecione para a página do cliente (ou outra área protegida)
                 window.location.href = "/client-area";
             }
         } catch (error: unknown) {
@@ -42,36 +39,40 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="loginContainer">
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="senha">Senha</label>
-                    <input
-                        type="password"
-                        id="senha"
-                        name="senha"
-                        value={formData.senha}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                {error && <p className="error-message">{error}</p>}
-                <button type="submit" className="btn btn-primary" disabled={loading}>
-                    {loading ? "Entrando..." : "Entrar"}
-                </button>
-            </form>
+        <div className="container d-flex justify-content-center align-items-center vh-100">
+            <div className="col-md-4 col-sm-6 col-10" style={{ maxWidth: "400px" }}>
+                <h1 className="text-center mb-4">Login</h1>
+                <form onSubmit={handleSubmit} className="p-4 bg-white text-dark rounded shadow">
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            className="form-control"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="senha" className="form-label">Senha</label>
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            className="form-control"
+                            value={formData.senha}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    {error && <div className="alert alert-danger">{error}</div>}
+                    <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                        {loading ? "Entrando..." : "Entrar"}
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
