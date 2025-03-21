@@ -5,7 +5,7 @@ import axios from "axios";
 // });
 
 const api = axios.create({
-  baseURL: "https://estudojs-production.up.railway.app/api/auth",
+  baseURL: import.meta.env.VITE_API_URL + "/api/auth",
 });
 
 export const setAuthToken = (token: string) => {
