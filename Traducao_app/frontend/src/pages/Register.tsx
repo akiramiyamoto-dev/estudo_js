@@ -35,7 +35,7 @@ const Register: React.FC = () => {
             //     telefone: formData.telefone,
             //     senha: formData.senha,
             // });
-            const response = await axios.post("https://estudojs-production.up.railway.app/auth/register", {
+            const response = await axios.post(`${process.env.VITE_API_BASE_URL}/auth/register`, {
                 nome: formData.nome,
                 email: formData.email,
                 telefone: formData.telefone,

@@ -22,7 +22,7 @@ const Login: React.FC = () => {
             //     senha: formData.senha,
             // });
 
-            const response = await axios.post("https://estudojs-production.up.railway.app/api/auth/login", {
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
                 email: formData.email,
                 senha: formData.senha,
             });
