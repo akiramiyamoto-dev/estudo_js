@@ -7,22 +7,3 @@ declare global {
     }
   }
 }
-
-// import * as express from "express";
-// import { Request } from "express";
-// import { JwtPayload } from "jsonwebtoken";
-
-// declare module "express-serve-static-core" {
-//   interface Request {
-//     user?: JwtPayload;
-//   }
-// }
-// const app: express.App = express(); // Erro proposital: `App` não existe
-
-// declare global {
-//   namespace Express {
-//     interface Request {
-//       user?: { id: number; nome: string };
-//     }
-//   }
-// }
