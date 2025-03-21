@@ -29,7 +29,13 @@ const Register: React.FC = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/register", {
+            // const response = await axios.post("http://localhost:5000/api/auth/register", {
+            //     nome: formData.nome,
+            //     email: formData.email,
+            //     telefone: formData.telefone,
+            //     senha: formData.senha,
+            // });
+            const response = await axios.post("https://estudojs-production.up.railway.app/auth/register", {
                 nome: formData.nome,
                 email: formData.email,
                 telefone: formData.telefone,

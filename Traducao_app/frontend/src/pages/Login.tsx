@@ -17,7 +17,12 @@ const Login: React.FC = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", {
+            // const response = await axios.post("http://localhost:5000/api/auth/login", {
+            //     email: formData.email,
+            //     senha: formData.senha,
+            // });
+
+            const response = await axios.post("https://estudojs-production.up.railway.app/api/auth/login", {
                 email: formData.email,
                 senha: formData.senha,
             });

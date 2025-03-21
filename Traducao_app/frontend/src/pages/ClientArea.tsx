@@ -48,7 +48,7 @@ const ClientArea: React.FC = () => {
             }
 
             // Faz a requisição para o back-end
-            const response = await axios.post("http://localhost:5000/api/clients/documents/upload", formData, {
+            const response = await axios.post("https://estudojs-production.up.railway.app/api/clients/documents/upload", formData, {
                 headers: {
                     "Content-type": "multipart/form-data",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
