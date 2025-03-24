@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { Cliente } from "../models/models"; // Importando o modelo Cliente
+import { Cliente } from "../models/models.js"; // Importando o modelo Cliente
 
 // Registro de cliente
 export const register = async (req: Request, res: Response) => {

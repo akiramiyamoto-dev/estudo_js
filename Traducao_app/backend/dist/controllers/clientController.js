@@ -1,5 +1,5 @@
 /***************************************************************************** */
-import { Cliente } from "../models/models"; // Supondo que você tenha um modelo Cliente
+import { Cliente } from "../models/models.js"; // Supondo que você tenha um modelo Cliente
 // Controlador para obter todos os clientes (já foi discutido)
 export const getAllClients = async (req, res) => {
     try {

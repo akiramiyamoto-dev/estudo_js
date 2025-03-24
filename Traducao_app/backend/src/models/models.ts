@@ -1,5 +1,5 @@
 import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/databaseConfig"; // Caminho correto para a configuração do sequelize
+import sequelize from "../config/databaseConfig.js"; // Caminho correto para a configuração do sequelize
 
 class Cliente extends Model {
   id!: number;
