@@ -48,17 +48,22 @@ const ClientArea: React.FC = () => {
             }
 
             // Faz a requisição para o back-end
-            const response = await axios.post("http://localhost:5000/api/clients/documents/upload", formData, {
+            const cloudinaryUrl = `https://api.cloudinary.com/v1_1/dsppglfxs/upload`;
+
+            const response = await axios.post(cloudinaryUrl, formData, {
                 headers: {
                     "Content-type": "multipart/form-data",
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 },
             }); console.log("teste de axios post")
-            console.log("aqui é a parte do Axios Resposta do servidor:", response);
+            console.log("Resposta do Cloudinary:", response.data);
 
-            setFeedback("Documento enviado com sucesso!");
-            setMessage(""); // Reseta o campo de mensagem
-            setFile(null); // Reseta o arquivo selecionado
+            if (response.data.secure_url) {
+                setFeedback("Documento enviado com sucesso!");
+                console.log("URL do arquivo:", response.data.secure_url);
+            } else {
+                setFeedback("Erro ao enviar o documento.");
+            }
         } catch (error) {
             console.error("Erro no upload:", error);
             setFeedback("Erro ao enviar o documento. Tente novamente.");
