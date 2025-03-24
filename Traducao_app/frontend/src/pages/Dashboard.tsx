@@ -6,7 +6,9 @@ const Dashboard: React.FC = () => {
 
     useEffect(() => {
         const fetchClients = async () => {
-            const response = await axios.get("http://localhost:5000/api/clients", {
+            const apiUrl = import.meta.env.VITE_API_BASE_URL;
+
+            const response = await axios.get(`${apiUrl}/clients`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
             });
             setClients(response.data);

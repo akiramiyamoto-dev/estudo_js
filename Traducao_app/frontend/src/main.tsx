@@ -7,14 +7,17 @@ import NavBar from './components/NavBar.tsx';
 import Footer from './components/Footer.tsx';
 import { AuthProvider } from "./context/AuthProvider.tsx";
 import HeroSection from './components/HeroSection.tsx';
+import { BrowserRouter } from 'react-router-dom';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider>
-      <NavBar />
-      <HeroSection />
-      <App />
-      <Footer />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <NavBar />
+        <HeroSection />
+        <App />
+        <Footer />
+      </AuthProvider>
+    </BrowserRouter>
   </StrictMode>
 );
