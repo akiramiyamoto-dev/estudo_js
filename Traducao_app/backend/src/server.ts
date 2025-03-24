@@ -19,7 +19,7 @@ app.use(
   cors({
     origin: "https://estudo-js-eight.vercel.app/", // Substitua pelo domínio do frontend
     methods: ["GET", "POST", "PUT", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
     credentials: true, //Permitir cookies e headers de autenticação
   })
 );
