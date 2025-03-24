@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node src/server.ts",
-    "start": "node start.js"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -21,7 +22,6 @@
     "uuid": "^11.0.5"
   },
   "devDependencies": {
-    "@types/babel__core": "^7.20.5",
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.3",
@@ -34,6 +34,5 @@
     "@types/uuid": "^10.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
-  },
-  "type": "module"
+  }
 }
