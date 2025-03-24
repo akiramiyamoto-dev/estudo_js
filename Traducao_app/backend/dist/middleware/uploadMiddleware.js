@@ -1,12 +1,18 @@
-import multer from "multer";
-import path from "path";
-import fs from "fs";
-const uploadPath = path.resolve(__dirname, "../uploads");
-if (!fs.existsSync(uploadPath)) {
-    fs.mkdirSync(uploadPath, { recursive: true });
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.uploadMiddleware = void 0;
+const multer_1 = __importDefault(require("multer"));
+const path_1 = __importDefault(require("path"));
+const fs_1 = __importDefault(require("fs"));
+const uploadPath = path_1.default.resolve(__dirname, "../uploads");
+if (!fs_1.default.existsSync(uploadPath)) {
+    fs_1.default.mkdirSync(uploadPath, { recursive: true });
 }
 // Configuração de armazenamento
-const storage = multer.diskStorage({
+const storage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
         // Define a pasta onde os arquivos serão armazenados
         // cb(null, path.resolve(__dirname, "../uploads"));
@@ -29,7 +35,7 @@ const fileFilter = (req, file, cb) => {
     }
 };
 // Configuração do middleware de upload
-const upload = multer({
+const upload = (0, multer_1.default)({
     storage,
     limits: { fileSize: 100 * 1024 * 1024 }, // Limite de 100mb
     fileFilter,
@@ -50,8 +56,4 @@ const uploadMiddleware = (req, res, next) => {
         next();
     });
 };
-/********************************************** */
-// // Middleware para lidar com o upload de um único arquivo (campo "file")
-// const uploadMiddleware = upload.single("file");
-/************************************************* */
-export { uploadMiddleware };
+exports.uploadMiddleware = uploadMiddleware;

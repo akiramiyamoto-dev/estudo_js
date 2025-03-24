@@ -1,9 +1,14 @@
-import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const sequelize_1 = require("sequelize");
+const dotenv_1 = __importDefault(require("dotenv"));
 // Carrega as variáveis de ambiente do arquivo .env
-dotenv.config();
+dotenv_1.default.config();
 // Configuração do Sequelize usando variáveis de ambiente
-const sequelize = new Sequelize({
+const sequelize = new sequelize_1.Sequelize({
     dialect: process.env.DB_DIALECT, // Dialeto do banco
     host: process.env.DB_HOST, // Host do banco
     username: process.env.DB_USERNAME, // Usuário do banco
@@ -12,4 +17,4 @@ const sequelize = new Sequelize({
     port: Number(process.env.DB_PORT), // Porta do banco
     logging: process.env.NODE_ENV === "development" ? console.log : false, // Ativa logs apenas no ambiente de desenvolvimento
 });
-export default sequelize;
+exports.default = sequelize;

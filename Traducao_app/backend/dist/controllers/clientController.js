@@ -1,7 +1,19 @@
+"use strict";
 /***************************************************************************** */
-import { Cliente } from "../models/models.js"; // Supondo que você tenha um modelo Cliente
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.uploadDocument = exports.getAllClients = void 0;
+const models_js_1 = require("../models/models.js"); // Supondo que você tenha um modelo Cliente
 // Controlador para obter todos os clientes (já foi discutido)
-export const getAllClients = async (req, res) => {
+const getAllClients = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Lógica para buscar clientes (atualmente uma resposta de exemplo)
         res.status(200).json({ message: "Lista de clientes" });
@@ -10,9 +22,10 @@ export const getAllClients = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: "Erro ao buscar clientes" });
     }
-};
+});
+exports.getAllClients = getAllClients;
 // Controlador para upload de documentos
-export const uploadDocument = async (req, res) => {
+const uploadDocument = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Verifica se o arquivo foi enviado
         if (!req.file) {
@@ -32,13 +45,13 @@ export const uploadDocument = async (req, res) => {
         // const filePath = `http://localhost:5000/uploads/${uniqueFileName}`;
         // (Opcional) Salvar o caminho do arquivo no banco de dados, associando ao cliente (caso seja necessário)
         const clienteId = req.body.clienteId; // Supondo que o clienteId seja enviado no corpo da requisição
-        const cliente = await Cliente.findByPk(clienteId);
+        const cliente = yield models_js_1.Cliente.findByPk(clienteId);
         if (!cliente) {
             return res.status(404).json({ message: "Cliente não encontrado!" });
         }
         // Salva o caminho do arquivo no banco de dados (opcional)
         cliente.documentoPath = filePath;
-        await cliente.save();
+        yield cliente.save();
         // Resposta de sucesso com o caminho do arquivo
         res.status(200).json({
             message: "Upload bem-sucedido!",
@@ -50,4 +63,5 @@ export const uploadDocument = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: "Erro ao fazer upload do arquivo" });
     }
-};
+});
+exports.uploadDocument = uploadDocument;
