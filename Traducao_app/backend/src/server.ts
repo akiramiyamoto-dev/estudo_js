@@ -7,7 +7,6 @@ import path from "path";
 import sequelize from "./config/databaseConfig.js"; // Configuração do Sequelize
 import authRoutes from "./routes/authRoutes.js"; // Rotas de autenticação
 import clientRoutes from "./routes/clientRoutes.js"; // Rotas relacionadas aos clientes
-// import { Cliente } from "./models/models"; // Importar o modelo de cliente
 
 // Carregar variáveis de ambiente
 dotenv.config();
