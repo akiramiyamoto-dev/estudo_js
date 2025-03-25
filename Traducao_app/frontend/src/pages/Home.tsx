@@ -39,7 +39,7 @@ const Home: React.FC = () => {
                     <h2 className="display-6 text-center fw-bold mb-4" style={{}}>Nossos Preços</h2>
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {/*Plano Básico*/}
-                        <div className="col">
+                        <div className="col-12 co-md-6 col-lg-4">
                             <div className="card text-center shadow-sm">
                                 <div className="card-header text-white fw-bold" style={{ backgroundColor: "#94005B" }}>Traduções de Documentos</div>
                                 <div className="card-body">
