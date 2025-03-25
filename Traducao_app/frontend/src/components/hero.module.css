@@ -12,4 +12,5 @@
   padding: 250px 0;
   margin-right: auto;
   margin-left: auto;
+  overflow-x: hidden;
 }
