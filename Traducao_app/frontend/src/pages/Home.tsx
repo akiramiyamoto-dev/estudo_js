@@ -35,7 +35,7 @@ const Home: React.FC = () => {
 
             </div>
             <div className={`${styles.containerValores} containerValores`} >
-                <div className="row mx-5 p-5 row-cols-1 row-cols-md-1 row-cols-lg-1" >
+                <div className="row mx-5 p-5 row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"  >
                     <h2 className="display-6 text-center fw-bold mb-4" style={{}}>Nossos Preços</h2>
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {/*Plano Básico*/}
