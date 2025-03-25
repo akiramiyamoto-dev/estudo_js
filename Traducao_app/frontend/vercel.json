@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://estudojs-production.up.railway.app/api/$1"
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ]
 }
