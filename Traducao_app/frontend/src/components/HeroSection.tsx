@@ -5,7 +5,7 @@ const HeroSection: React.FC = () => {
     return (
 
         < div className={`${styles.heroContainer} heroContainer`} style={{ height: 600 }} >
-            <div className="row">
+            <div className="row g-0">
                 <div className="col-12">
                     <div className={`${styles.hero} row Hero`}>
                         <h1 className="display-1 fw-bold pb-4">Traduções Profissionais</h1>
