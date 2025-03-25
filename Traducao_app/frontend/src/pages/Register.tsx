@@ -30,9 +30,9 @@ const Register: React.FC = () => {
 
         try {
             //Variavel de ambiente para a URL da API
-            const apiURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+            const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
-            const response = await axios.post(`${apiURL}/auth/register`, {
+            const response = await axios.post(`${apiUrl}/auth/register`, {
                 nome: formData.nome,
                 email: formData.email,
                 telefone: formData.telefone,

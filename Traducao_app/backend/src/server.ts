@@ -17,7 +17,7 @@ const app = express();
 // Middlewares globais
 app.use(
   cors({
-    origin: "https://estudo-js-eight.vercel.app/", // Substitua pelo domínio do frontend
+    origin: process.env.FRONTEND_URL, //VARIÁVEL DE AMBIENTE PARA A URL DO FRONTEND
     methods: ["GET", "POST", "PUT", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
     credentials: true, //Permitir cookies e headers de autenticação

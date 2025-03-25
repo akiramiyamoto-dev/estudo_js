@@ -17,9 +17,9 @@ const Login: React.FC = () => {
         setLoading(true);
 
         try {
-            const apiURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+            const apiUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
-            const response = await axios.post(`${apiURL}/auth/login`, {
+            const response = await axios.post(`${apiUrl}/auth/login`, {
                 email: formData.email,
                 senha: formData.senha,
             });
