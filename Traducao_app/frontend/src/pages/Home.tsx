@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     return (
         <>
             <div className="container px-4 py-5 my-5 text-center">
-                <div className="row justify-content-center align-items-center mx-5 g-4 py-5 row-cols-1 row-cols-md-3 row-cols-lg-4 ">
+                <div className="row justify-content-center align-items-center mx-auto g-4 py-5 row-cols-1 row-cols-md-3 row-cols-lg-4 ">
                     {/*Seção de features - explicação dos serviços prestados */}
                     <div className="feature col px-4 py-5">
                         <div className="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
@@ -37,7 +37,7 @@ const Home: React.FC = () => {
             <div className={`${styles.containerValores} containerValores`} >
                 <h2 className="display-6 text-center fw-bold mb-4" style={{}}>Nossos Preços</h2>
 
-                <div className="row mx-auto px-3 py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4"  >
+                <div className="row mx-auto px-3 py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-1 g-4"  >
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {/*Plano Básico*/}
                         <div className="col-12 co-md-6 col-lg-4">
