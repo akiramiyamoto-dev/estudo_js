@@ -26,13 +26,18 @@ const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">
+                            <Link className="nav-link" to="/Login">
                                 Login
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/register">
+                            <Link className="nav-link" to="/Register">
                                 Cadastrar
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/CartPage">
+                                Cart
                             </Link>
                         </li>
 
