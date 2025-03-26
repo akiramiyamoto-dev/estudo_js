@@ -5,7 +5,7 @@ import { Button, Table, Container, Row, Col } from "react-bootstrap";
 // Carregar a chave pública do Stripe do arquivo .env (com VITE_)
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const Cart = () => {
+const CartPage = () => {
     const [items] = useState([
         { id: 1, name: "Produto A", price: 2000 }, // preço em centavos (ex: 2000 = 20.00)
         { id: 2, name: "Produto B", price: 3000 },
@@ -97,4 +97,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default CartPage;
