@@ -1,87 +1,100 @@
 import { useState } from "react";
-import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import { Button, Table, Container, Row, Col } from "react-bootstrap";
 
-interface CartItem {
-    id: string;
-    name: string;
-    price: number; // preço em ienes
-    quantity: number;
-}
+// Carregar a chave pública do Stripe do arquivo .env (com VITE_)
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const CartPage = () => {
-    // Dados do carrinho (com setCart para atualizar o estado)
-    const [cart, setCart] = useState<CartItem[]>([
-        { id: "1", name: "Produto A", price: 1500, quantity: 2 },
-        { id: "2", name: "Produto B", price: 2000, quantity: 1 },
+const Cart = () => {
+    const [items] = useState([
+        { id: 1, name: "Produto A", price: 2000 }, // preço em centavos (ex: 2000 = 20.00)
+        { id: 2, name: "Produto B", price: 3000 },
+        { id: 3, name: "Produto C", price: 1500 },
     ]);
 
-    // Função para calcular o total
-    const calculateTotal = () => {
-        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    };
+    const totalAmount = items.reduce((sum, item) => sum + item.price, 0);
 
-    // Função para atualizar a quantidade de um item no carrinho
-    const updateQuantity = (id: string, quantity: number) => {
-        setCart((prevCart) =>
-            prevCart.map((item) =>
-                item.id === id ? { ...item, quantity } : item
-            )
-        );
-    };
-
-    // Função para remover um item do carrinho
-    const removeItem = (id: string) => {
-        setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-    };
-
-    // Função para redirecionar ao Stripe Checkout
+    // Função para redirecionar para o Stripe Checkout
     const handleCheckout = async () => {
-        try {
-            // Enviar os dados do carrinho para o backend
-            const response = await axios.post("http://localhost:5000/api/checkout", {
-                items: cart,
-                total: calculateTotal(),
-            });
+        const stripe = await stripePromise;
 
-            // Redireciona para a URL do Stripe
-            window.location.href = response.data.url;
-        } catch (error) {
-            console.error("Erro ao iniciar pagamento:", error);
+        // Enviar dados do carrinho para o backend (a rota para criação de sessão Stripe)
+        const response = await fetch("/api/checkout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                productName: items.map(item => item.name).join(", "),
+                amount: totalAmount,
+            }),
+        });
+
+        const session = await response.json();
+
+        // Redirecionar o usuário para o Stripe Checkout
+        const { error } = await stripe!.redirectToCheckout({
+            sessionId: session.url,
+        });
+
+        if (error) {
+            console.log("Erro no Stripe Checkout:", error.message);
         }
     };
 
     return (
-        <div>
-            <h1>Carrinho de Compras</h1>
-            <ul>
-                {cart.map((item) => (
-                    <li key={item.id}>
-                        {item.name} - ¥{item.price / 100} x {item.quantity} = ¥
-                        {(item.price * item.quantity) / 100}
-                        <div>
-                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
-                                Aumentar Quantidade
-                            </button>
-                            <button
-                                onClick={() =>
-                                    item.quantity > 1
-                                        ? updateQuantity(item.id, item.quantity - 1)
-                                        : null
-                                }
-                            >
-                                Diminuir Quantidade
-                            </button>
-                            <button onClick={() => removeItem(item.id)}>Remover</button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+        <Container className="mt-5">
+            <Row>
+                <Col md={8}>
+                    <h2>Seu Carrinho</h2>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {items.map((item) => (
+                                <tr key={item.id}>
+                                    <td>{item.name}</td>
+                                    <td>{(item.price / 100).toFixed(2)} ¥</td> {/* Exibindo preço em ienes */}
+                                    <td>
+                                        <Button variant="danger" size="sm">
+                                            Remover
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
 
-            <h2>Total: ¥{calculateTotal() / 100}</h2>
-
-            <button onClick={handleCheckout}>Ir para o pagamento</button>
-        </div>
+                    <h3>Total: {(totalAmount / 100).toFixed(2)} ¥</h3>
+                    <Button
+                        variant="success"
+                        size="lg"
+                        onClick={handleCheckout}
+                        className="mt-4"
+                    >
+                        Finalizar Compra
+                    </Button>
+                </Col>
+                <Col md={4}>
+                    <h4>Detalhes do Pedido</h4>
+                    <ul>
+                        {items.map((item) => (
+                            <li key={item.id}>
+                                {item.name} - {(item.price / 100).toFixed(2)} ¥
+                            </li>
+                        ))}
+                    </ul>
+                    <hr />
+                    <h5>Total: {(totalAmount / 100).toFixed(2)} ¥</h5>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
-export default CartPage;
+export default Cart;
