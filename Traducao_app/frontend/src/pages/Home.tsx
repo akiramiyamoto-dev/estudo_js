@@ -37,7 +37,7 @@ const Home: React.FC = () => {
             <div className={`${styles.containerValores} containerValores`} >
                 <h2 className="display-6 text-center fw-bold mb-4" style={{}}>Nossos Preços</h2>
 
-                <div className="row mx-auto px-3 py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-1 g-4"  >
+                <div className="row justify-content-center px-3 py-5 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-1 g-4"  >
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {/*Plano Básico*/}
                         <div className="col-12 co-md-6 col-lg-4">
